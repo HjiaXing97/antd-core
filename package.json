@@ -2,7 +2,7 @@
   "name": "antd-core",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "postinstall": "lerna bootstrap",
     "lint": "eslint \"packages/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "prepare": "husky install",
