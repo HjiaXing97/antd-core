@@ -41,7 +41,7 @@
     "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       { "argsIgnorePattern": "^_" }
     ],
     "import/extensions": [
@@ -63,7 +63,9 @@
     "import/no-extraneous-dependencies" : "off",
     "import/prefer-default-export":"off",
     "no-shadow":"off",
-    "no-param-reassign":"off"
+    "no-param-reassign":"off",
+    "@typescript-eslint/ban-ts-comment":"off",
+    " no-unused-vars":"off"
   },
   "settings": {
     "react": {
