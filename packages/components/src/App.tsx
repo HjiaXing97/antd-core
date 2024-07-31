@@ -13,17 +13,14 @@ const App = () => {
     {
       title: "姓名",
       dataIndex: "name",
-      key: "name",
     },
     {
       title: "年龄",
       dataIndex: "age",
-      key: "age",
     },
     {
       title: "地址",
       dataIndex: "address",
-      key: "address",
     },
   ];
 
