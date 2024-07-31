@@ -2,7 +2,7 @@
  * @Author: HuangJX 17388766232@163.com
  * @Date: 2024-07-24 08:47:16
  * @LastEditors: HuangJX 17388766232@163.com
- * @LastEditTime: 2024-07-31 11:35:17
+ * @LastEditTime: 2024-07-31 15:58:49
  * @FilePath: \antd-core\packages\components\src\BaseTable\shared.ts
  * @Description: 表格类型文件
  */
@@ -24,9 +24,8 @@ export type ValueType =
   | "money"
   | "dict"
   | "option"
+  | "index"
   | ((text: any, record: any, index: number) => ReactNode);
-
-export type SpecialType = "operation" | "index";
 
 export interface IValueOption {
   label?: string;
@@ -91,8 +90,6 @@ export interface IColumnType<RecordType> extends ColumnType<RecordType> {
    * @description 枚举配置
    */
   valueOption?: IValueOption;
-
-  type: SpecialType;
 }
 
 export interface ITableHandle {
@@ -105,6 +102,26 @@ export interface ITableHandle {
 export interface ISearchHandle {
   doSearch: () => void;
   doReset: () => void;
+}
+
+/**
+ * @description 表格工具栏
+ */
+export interface IToolBarProps {
+  customNode?: ReactNode;
+  subTitle?: string | ReactNode;
+  showAddBtn?: boolean;
+  showExportBtn?: boolean;
+  showImportBtn?: boolean;
+  customHandleAdd?: () => void;
+  customHandleImport?: () => void;
+  customHandleExport?: () => void;
+}
+
+export interface IToolBarHandle {
+  handleAdd: () => void;
+  handleImport: () => void;
+  handleExport: () => void;
 }
 export interface ITableProps<T> {
   /**
@@ -138,7 +155,9 @@ export interface ITableProps<T> {
   pagination?: boolean;
 
   /**
-   * @description 表格操作栏
+   * @description antd表格原生配置
    */
-  toolBarRender?: () => ReactNode;
+  antdTableProps?: any;
+
+  toolBar?: IToolBarProps | false;
 }

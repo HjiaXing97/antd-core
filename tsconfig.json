@@ -12,5 +12,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["packages/**/*"]
+  "include": ["packages/**/*"],
+  "ignorePatterns": ["vite.config.ts"]
 }

@@ -2,7 +2,7 @@
  * @Author: HuangJX 17388766232@163.com
  * @Date: 2024-07-24 08:47:16
  * @LastEditors: HuangJX 17388766232@163.com
- * @LastEditTime: 2024-07-31 10:38:04
+ * @LastEditTime: 2024-07-31 15:59:25
  * @FilePath: \antd-core\packages\components\src\BaseTable\index.tsx
  * @Description: 基础表格组件
  */
@@ -21,6 +21,7 @@ import type {
   ISearchItem,
 } from "./shared";
 import TableSearch from "./components/Search";
+import TableToolBar from "./components/ToolBar";
 
 const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
   const [columns, setColumns] = useState<IColumnType<T>[]>([]);
@@ -30,6 +31,7 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
   const rowKey = props?.rowKey || "id";
 
   useEffect(() => {
+    // 过滤筛选条件
     const searchItem = props.columns
       .filter((v) => !v.hideInSearchForm)
       .map((v) => ({
@@ -63,8 +65,14 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
   return (
     <div>
       <TableSearch searchItem={searchItem} />
+      {props.toolBar !== false && <TableToolBar {...props.toolBar} />}
       {/* @ts-ignore */}
-      <Table columns={columns} dataSource={dataSource} rowKey={rowKey} />
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        rowKey={rowKey}
+        {...(props.antdTableProps ?? {})}
+      />
     </div>
   );
 };

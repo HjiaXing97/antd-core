@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle } from "react";
 import { Form, Input, Col, Row, Button, Space } from "antd";
 
 import { ISearchItem, ISearchHandle } from "../../shared";
-import style from "./styled.module.less";
+import style from "./style.module.less";
 
 interface IProps {
   searchItem: ISearchItem[];

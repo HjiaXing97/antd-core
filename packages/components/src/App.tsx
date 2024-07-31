@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import BaseTable from "./BaseTable";
 import type { IColumnType } from "./BaseTable/shared";
 
@@ -53,7 +54,24 @@ const App = () => {
 
   return (
     <div>
-      <BaseTable<IDataType> columns={columns} request={getList} />
+      <BaseTable<IDataType>
+        columns={columns}
+        request={getList}
+        antdTableProps={{
+          rowSelection: {
+            columnWidth: "100px",
+            fixed: true,
+          },
+        }}
+        toolBar={{
+          customNode: (
+            <>
+              <Button>自定义按钮1</Button>
+              <Button>自定义按钮2</Button>
+            </>
+          ),
+        }}
+      />
     </div>
   );
 };
