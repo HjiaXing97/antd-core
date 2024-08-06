@@ -2,7 +2,7 @@
  * @Author: HuangJX 17388766232@163.com
  * @Date: 2024-07-24 08:47:16
  * @LastEditors: HuangJX 17388766232@163.com
- * @LastEditTime: 2024-07-31 15:59:25
+ * @LastEditTime: 2024-08-06 09:02:20
  * @FilePath: \antd-core\packages\components\src\BaseTable\index.tsx
  * @Description: 基础表格组件
  */
@@ -22,6 +22,7 @@ import type {
 } from "./shared";
 import TableSearch from "./components/Search";
 import TableToolBar from "./components/ToolBar";
+import TableColumn from "./components/TableColumn";
 
 const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
   const [columns, setColumns] = useState<IColumnType<T>[]>([]);
@@ -43,7 +44,26 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
         valueOption: v.valueOption,
       }));
     setSearchItem(searchItem);
-    setColumns(props.columns);
+    const columns = props.columns
+      .filter((v) => !v.hideInTable)
+      .map((v) => ({
+        ...v,
+        render: (text: any, record: any, index: number) => {
+          if (v.render) return v.render(text, record, index);
+          if (v.valueType) {
+            return (
+              <TableColumn
+                text={text}
+                record={record}
+                index={index}
+                valueType={v.valueType}
+              />
+            );
+          }
+          return text;
+        },
+      }));
+    setColumns(columns);
   }, [props.columns]);
 
   useEffect(() => {
@@ -71,6 +91,7 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
         columns={columns}
         dataSource={dataSource}
         rowKey={rowKey}
+        bordered
         {...(props.antdTableProps ?? {})}
       />
     </div>
