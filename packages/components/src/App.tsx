@@ -22,7 +22,7 @@ const App = () => {
     {
       title: "地址",
       dataIndex: "address",
-      valueType: "dict",
+      valueType: "BaseDict",
     },
   ];
 

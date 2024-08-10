@@ -2,7 +2,7 @@
  * @Author: HuangJX 17388766232@163.com
  * @Date: 2024-07-24 08:47:16
  * @LastEditors: HuangJX 17388766232@163.com
- * @LastEditTime: 2024-08-06 09:02:20
+ * @LastEditTime: 2024-08-10 09:27:13
  * @FilePath: \antd-core\packages\components\src\BaseTable\index.tsx
  * @Description: 基础表格组件
  */
@@ -49,7 +49,9 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
       .map((v) => ({
         ...v,
         render: (text: any, record: any, index: number) => {
+          // 如果传入render函数，则使用render函数渲染
           if (v.render) return v.render(text, record, index);
+          // 如果传入valueType，则使用valueType渲染
           if (v.valueType) {
             return (
               <TableColumn
@@ -57,6 +59,8 @@ const BaseTable = <T,>(props: ITableProps<T>, ref: Ref<ITableHandle>) => {
                 record={record}
                 index={index}
                 valueType={v.valueType}
+                prop={v.dataIndex as string}
+                additionalProps={v.additionalProps}
               />
             );
           }

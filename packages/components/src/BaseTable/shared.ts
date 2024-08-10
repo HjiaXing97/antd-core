@@ -2,7 +2,7 @@
  * @Author: HuangJX 17388766232@163.com
  * @Date: 2024-07-24 08:47:16
  * @LastEditors: HuangJX 17388766232@163.com
- * @LastEditTime: 2024-07-31 15:58:49
+ * @LastEditTime: 2024-08-10 09:42:10
  * @FilePath: \antd-core\packages\components\src\BaseTable\shared.ts
  * @Description: 表格类型文件
  */
@@ -13,7 +13,7 @@ import { ReactNode } from "react";
  * @description    表格列类型扩展
  */
 export type ValueType =
-  | "select"
+  | "BaseSelect"
   | "date"
   | "dateRange"
   | "textarea"
@@ -22,10 +22,9 @@ export type ValueType =
   | "checkbox"
   | "upload"
   | "money"
-  | "dict"
+  | "BaseDict"
   | "option"
-  | "index"
-  | ((text: any, record: any, index: number) => ReactNode);
+  | "index";
 
 export interface IValueOption {
   label?: string;
@@ -90,6 +89,8 @@ export interface IColumnType<RecordType> extends ColumnType<RecordType> {
    * @description 枚举配置
    */
   valueOption?: IValueOption;
+
+  additionalProps?: Record<string, any>;
 }
 
 export interface ITableHandle {

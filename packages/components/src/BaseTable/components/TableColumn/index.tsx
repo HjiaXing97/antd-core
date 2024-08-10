@@ -1,20 +1,27 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 import { type ValueType } from "../../shared";
+import componentMap from "../../../packages";
 
 interface TableColumnProps {
   text: any;
   record: any;
   index: number;
   valueType: ValueType;
+  prop: string;
+  additionalProps: Record<string, any> | undefined;
 }
 
 const TableColumn: FC<TableColumnProps> = (props) => {
-  console.log(props.text);
-  console.log(props.record);
-  console.log(props.index);
-  console.log(props.valueType);
+  const Component = componentMap[props.valueType];
+  if (!Component) return <div>组件未找到,请检查valueType</div>;
 
-  return <div>TableColumn</div>;
+  const LazyComponent = lazy(Component);
+
+  return (
+    <Suspense fallback={<div>加载中....</div>}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
 };
 
 export default TableColumn;
