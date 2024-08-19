@@ -17,6 +17,16 @@ const TableColumn: FC<TableColumnProps> = (props) => {
 
   const LazyComponent = lazy(Component);
 
+  if (props.valueType === "BaseDict") {
+    console.log(props.additionalProps);
+
+    return (
+      <Suspense fallback={<div>加载中....</div>}>
+        <LazyComponent {...props} />
+      </Suspense>
+    );
+  }
+
   return (
     <Suspense fallback={<div>加载中....</div>}>
       <LazyComponent {...props} />

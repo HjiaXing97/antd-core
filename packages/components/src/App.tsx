@@ -18,11 +18,17 @@ const App = () => {
     {
       title: "年龄",
       dataIndex: "age",
+      render(text) {
+        return <span>{text}岁</span>;
+      },
     },
     {
       title: "地址",
       dataIndex: "address",
       valueType: "BaseDict",
+      additionalProps: {
+        dictType: "address",
+      },
     },
   ];
 
