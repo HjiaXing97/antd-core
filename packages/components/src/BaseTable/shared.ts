@@ -124,6 +124,7 @@ export interface IToolBarHandle {
   handleImport: () => void;
   handleExport: () => void;
 }
+
 export interface ITableProps<T> {
   /**
    * @description 表格列
@@ -159,6 +160,5 @@ export interface ITableProps<T> {
    * @description antd表格原生配置
    */
   antdTableProps?: any;
-
   toolBar?: IToolBarProps | false;
 }
