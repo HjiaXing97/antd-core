@@ -1,9 +1,11 @@
 {
   "name": "antd-core",
   "private": true,
+  "version": "0.0.1",
   "scripts": {
     "build": "lerna run build",
     "version": "lerna version",
+    "publish": "lerna publish",
     "lint": "eslint \"packages/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "prepare": "husky install",
