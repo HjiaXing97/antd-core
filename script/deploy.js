@@ -16,9 +16,9 @@ console.log("Starting deployment...");
 runCommand("lerna run build");
 
 // Run version command
-runCommand("lerna version");
+runCommand("lerna version --no-git-tag-version");
 
 // Run publish command
-runCommand("lerna publish from-git");
+runCommand("lerna publish --force-publish --no-private");
 
 console.log("Deployment completed.");
