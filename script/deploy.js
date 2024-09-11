@@ -19,6 +19,6 @@ runCommand("lerna run build");
 runCommand("lerna version --no-git-tag-version");
 
 // Run publish command
-runCommand("lerna publish --force-publish --no-private");
+runCommand("lerna publish from-package  --no-private");
 
 console.log("Deployment completed.");
