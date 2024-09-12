@@ -1,6 +1,6 @@
 {
   "name": "@antd-core/component",
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
