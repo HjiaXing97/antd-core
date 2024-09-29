@@ -1,6 +1,6 @@
 {
   "name": "@antd-core/component",
-  "version": "0.0.7",
+  "version": "0.0.8-alpha.0",
   "type": "module",
   "main": "./build/lib/index.js",
   "module": "./build/es/index.js",
