@@ -2,6 +2,10 @@
   "name": "@antd-core/component",
   "version": "0.0.7",
   "type": "module",
+  "main": "./build/lib/index.js",
+  "module": "./build/es/index.js",
+  "browser": "./build/dist/index.js",
+  "types": "./build/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,7 +16,9 @@
     "extends": "../../.eslintrc.json"
   },
   "files": [
-    "build",
+    "build/lib",
+    "build/es",
+    "build/dist",
     "src/*.less",
     "src/**/*.less",
     "src/**/**/*.less"

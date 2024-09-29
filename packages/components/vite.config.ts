@@ -8,11 +8,7 @@ export default defineConfig({
     react(),
     dts({
       tsconfigPath: "./tsconfig.prod.json",
-      outDir: "build/lib",
-    }),
-    dts({
-      tsconfigPath: "./tsconfig.prod.json",
-      outDir: "build/es",
+      outDir: "build/types", // 统一生成声明文件
     }),
   ],
   build: {
@@ -21,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: "src/index.ts",
       name: "components",
-      fileName: (format) => `components.${format}/index.js`,
+      fileName: (format) => `${format}/index.js`,
     },
     rollupOptions: {
       external: ["react", "react-dom"],
@@ -31,6 +27,8 @@ export default defineConfig({
           entryFileNames: "[name].js",
           exports: "named",
           name: "components",
+          preserveModules: true, // 保留模块结构
+          preserveModulesRoot: "src", // 保留的根目录为 src
           dir: "./build/dist",
           globals: {
             react: "React",
@@ -41,8 +39,8 @@ export default defineConfig({
           format: "es",
           entryFileNames: "[name].js",
           exports: "named",
-          preserveModules: true,
-          preserveModulesRoot: "src",
+          preserveModules: true, // 保留模块结构
+          preserveModulesRoot: "src", // 保留的根目录为 src
           dir: "./build/es",
           globals: {
             react: "React",
@@ -53,8 +51,8 @@ export default defineConfig({
           format: "cjs",
           entryFileNames: "[name].js",
           exports: "named",
-          preserveModules: true,
-          preserveModulesRoot: "src",
+          preserveModules: true, // 保留模块结构
+          preserveModulesRoot: "src", // 保留的根目录为 src
           dir: "./build/lib",
           globals: {
             react: "React",
