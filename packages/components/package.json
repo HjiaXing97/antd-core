@@ -12,7 +12,7 @@
     "extends": "../../.eslintrc.json"
   },
   "files": [
-    "dist",
+    "build",
     "src/*.less",
     "src/**/*.less",
     "src/**/**/*.less"

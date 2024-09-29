@@ -31,7 +31,7 @@
     "@typescript-eslint",
     "prettier"
   ],
-  "ignorePatterns": ["**/node_modules/**", "**/dist/**", "script/deploy.js"],
+  "ignorePatterns": ["**/node_modules/**", "**/build/**", "script/deploy.js"],
   "rules": {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",

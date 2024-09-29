@@ -4,7 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "outDir": "dist",
+    "outDir": "build",
     "strict": true,
     "jsx": "react-jsx",
     "allowJs": true,
